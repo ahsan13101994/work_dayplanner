@@ -23,3 +23,19 @@ $(document).ready(function() {
   $("#5pm .description").val(localStorage.getItem("5pm"));
 
   });
+
+  // Color Change depending on time // - dont know how to make it red once the field is filled
+
+  var m = moment();
+  $.each($(".time-block"), function (index, value) {
+      let dateHour = $(value).attr("data-time");
+      if (Number(dateHour) === m.hour()) {
+          $(this).find("textarea").addClass('present');
+      } else if (Number(dateHour) < m.hour()) {
+          $(this).find("textarea").addClass('past');
+      } else {
+          $(this).find("textarea").addClass('future');
+      }
+  });
+
+  // Color Change on the slot being taken// 
